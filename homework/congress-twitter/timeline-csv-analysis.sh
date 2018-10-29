@@ -1,3 +1,4 @@
+#!/bin/bash
 username="${1}"
 postcount="${2}"
 commonwords="https://gist.githubusercontent.com/deekayen/4148741/raw/01c6252ccc5b5fb307c1bb899c95989a8a284616/1-1000.txt"
