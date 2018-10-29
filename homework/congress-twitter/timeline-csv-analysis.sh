@@ -21,4 +21,4 @@ echo "Top 10 mentioned users (not including retweets) by ${username}"
 cat ${file} | csvfix order -fn 'Text' | grep -v "RT" | grep -oP '@[A-z0-9_]+' | tr "[:upper:]" "[:lower:]" | sort | uniq -c | sort -rn | head -n 10
 
 echo "Top tweeted 10 words with 5+ letters by ${username}"
-cat ${file} | csvfix order -fn 'Text' | grep -oP '[[:alpha:]]{5,}' | sort | uniq -c | sort -rn | head -n 10
+cat ${file} | csvfix order -fn 'Text' | grep -oP '[[:alpha:]]{5,}' | grep -vE "$(echo ${excludelist} | sed -r 's/[,; ]/\|/g')" | sort | uniq -c | sort -rn | head -n 10
